@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { LoginForm } from "@/components/login-form"
+import { useNavigate } from "react-router-dom"
+
 
 const loginSchema = z.object({
   username: z.string().min(3, "El nombre de usuario es obligatorio"),
@@ -12,6 +14,8 @@ const loginSchema = z.object({
 type LoginFormValues = z.infer<typeof loginSchema>
 
 export function StatefulLoginForm() {
+const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
@@ -35,6 +39,8 @@ export function StatefulLoginForm() {
 
       const result = await response.json()
       console.log("Login exitoso:", result)
+      navigate("/dashboard") // Redirige al dashboard o a la página deseada
+      
     } catch (error) {
       console.error("Error al iniciar sesión:", error)
     }
