@@ -1,6 +1,7 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-
+@custom-variant dark (&:is(.dark *));
 
 :root {
   --radius: 0.5rem;
@@ -36,3 +37,4 @@
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.606 0.25 292.717);
 }
+
